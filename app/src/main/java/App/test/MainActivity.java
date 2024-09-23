@@ -82,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
                     ScreenImage.setVisibility(View.INVISIBLE);
                     ExerciseImage.setVisibility(View.INVISIBLE);
                     FoodTrue = true;
-
+                    ExerciseTrue = false;
+                    ScreenTrue = false;
+                    MeditatingTrue = false;
                 }
                 if(Choice == "Exercising Everyday"){
                     MeditatingImage.setVisibility(View.INVISIBLE);
@@ -90,7 +92,9 @@ public class MainActivity extends AppCompatActivity {
                     ScreenImage.setVisibility(View.INVISIBLE);
                     ExerciseImage.setVisibility(View.VISIBLE);
                     FoodTrue = false;
-
+                    ExerciseTrue = true;
+                    ScreenTrue = false;
+                    MeditatingTrue = false;
                 }
                 if(Choice == "Meditating"){
                     MeditatingImage.setVisibility(View.VISIBLE);
@@ -98,7 +102,9 @@ public class MainActivity extends AppCompatActivity {
                     ScreenImage.setVisibility(View.INVISIBLE);
                     ExerciseImage.setVisibility(View.INVISIBLE);
                     FoodTrue = false;
-
+                    ExerciseTrue = false;
+                    ScreenTrue = false;
+                    MeditatingTrue = true;
                 }
                 if(Choice == "Limiting Screen Time"){
                     MeditatingImage.setVisibility(View.INVISIBLE);
@@ -106,7 +112,9 @@ public class MainActivity extends AppCompatActivity {
                     ScreenImage.setVisibility(View.VISIBLE);
                     ExerciseImage.setVisibility(View.INVISIBLE);
                     FoodTrue = false;
-
+                    ExerciseTrue = false;
+                    ScreenTrue = true;
+                    MeditatingTrue = false;
                 }
 
                 //Toast.makeText(MainActivity.this, "Selected: " + item, Toast.LENGTH_SHORT).show();
@@ -131,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
         text.setText("◄");
     }
     public void NextPage(View view){
+        linearLayout.setVisibility(View.INVISIBLE);
         invisText1.setVisibility(View.VISIBLE);
         text.setVisibility(View.INVISIBLE);
         HabitsButton.setVisibility(View.INVISIBLE);
@@ -151,14 +160,29 @@ public class MainActivity extends AppCompatActivity {
         ExerciseImage.setVisibility(View.INVISIBLE);
     }
     public void CreateHabit(View view){
-        Button button = new Button(this);
+        linearLayout.setVisibility(View.VISIBLE);
         if(FoodTrue = true){
-            button.setText("Eating Healthy");
+            Button foodbutton = new Button(this);
+            foodbutton.setText("Eating Healthy");
+            linearLayout.addView(foodbutton);
         }
-        linearLayout.addView(button);
-        if(NoneTrue = true){
-            linearLayout.removeView(button);
+        if(ScreenTrue = true){
+            Button screenbutton = new Button(this);
+            screenbutton.setText("Limit Screen Time");
+            linearLayout.addView(screenbutton);
         }
+        if(MeditatingTrue = true){
+            Button mbutton = new Button(this);
+            mbutton.setText("Meditating");
+            linearLayout.addView(mbutton);
+        }
+        if(ExerciseTrue = true){
+            Button ebutton = new Button(this);
+            ebutton.setText("Exercising Everyday");
+            linearLayout.addView(ebutton);
+        }
+
+
         invisText1.setVisibility(View.INVISIBLE);
         text.setVisibility(View.VISIBLE);
         HabitsButton.setVisibility(View.VISIBLE);
