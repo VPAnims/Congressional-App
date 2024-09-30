@@ -7,35 +7,48 @@ public class ButtonBooleans {
     private Boolean MeditatingTrue;
     private Boolean NoneTrue;
 
-    public void setBooleanTrue(int num){
-        FoodTrue = false;
-        ScreenTrue= false;
-        ExerciseTrue =false;
-        NoneTrue = false;
-        MeditatingTrue =false;
-
+    public void setBool(int num){
         if(num == 1){
             NoneTrue = true;
+            FoodTrue = false;
+            ScreenTrue = false;
+            MeditatingTrue = false;
+            ExerciseTrue = false;
         }
         if(num == 2){
+            NoneTrue = false;
             FoodTrue = true;
+            ScreenTrue = false;
+            MeditatingTrue = false;
+            ExerciseTrue = false;
         }
         if(num == 3){
+            NoneTrue = false;
+            FoodTrue = false;
             ScreenTrue = true;
+            MeditatingTrue = false;
+            ExerciseTrue = false;
         }
         if(num == 4){
-            ExerciseTrue = true;
+            NoneTrue = false;
+            FoodTrue = false;
+            ScreenTrue = false;
+            MeditatingTrue = true;
+            ExerciseTrue = false;
         }
         if(num == 5){
-            MeditatingTrue = true;
-        }
-        if(num == 6){
-            FoodTrue = false;
-            ScreenTrue= false;
-            ExerciseTrue =false;
             NoneTrue = false;
-            MeditatingTrue =false;
+            FoodTrue = false;
+            ScreenTrue = false;
+            MeditatingTrue = false;
+            ExerciseTrue = true;
         }
+    }
+    public boolean getScreenBool(){
+        return ScreenTrue;
+    }
+    public boolean getFoodBool(){
+        return FoodTrue;
     }
 
 }

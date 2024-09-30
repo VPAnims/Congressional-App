@@ -1,7 +1,7 @@
 package App.test;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.graphics.Color;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,15 +18,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import App.test.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+    private CalendarView calandar;
     private ImageView FoodImage;
     private ImageView ExerciseImage;
     private ImageView ScreenImage;
     private ImageView MeditatingImage;
-    private TextView text;
     private LinearLayout linearLayout;
     private TextView invisText1;
     private Button HabitsButton;
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         ExerciseImage = findViewById(R.id.Exercise);
         ScreenImage = findViewById(R.id.screenTime);
         MeditatingImage = findViewById(R.id.Meditating);
-        text = findViewById(R.id.Text);
+        calandar = findViewById(R.id.calendarView);
         invisText1 = findViewById(R.id.CreateText);
         HabitsButton = findViewById(R.id.button);
         NewHabitButton = findViewById(R.id.NextPageButton);
@@ -135,21 +137,31 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
         pickHabit.setAdapter(adapter);
     }
-    public void buttonNext(View view){
-        text.setText("◄");
-    }
+
     public void NextPage(View view){
         linearLayout.setVisibility(View.INVISIBLE);
         invisText1.setVisibility(View.VISIBLE);
-        text.setVisibility(View.INVISIBLE);
         HabitsButton.setVisibility(View.INVISIBLE);
         pickHabit.setVisibility(View.VISIBLE);
         NewHabitButton.setVisibility(View.GONE);
     }
+    public void CreatedButtonClicked() {
+        calandar.setVisibility(View.VISIBLE);
+        linearLayout.setVisibility(View.INVISIBLE);
+        invisText1.setVisibility(View.INVISIBLE);
+        HabitsButton.setVisibility(View.INVISIBLE);
+        pickHabit.setVisibility(View.INVISIBLE);
+        NewHabitButton.setVisibility(View.INVISIBLE);
+        FinishButton.setVisibility(View.INVISIBLE);
+        MeditatingImage.setVisibility(View.INVISIBLE);
+        FoodImage.setVisibility(View.INVISIBLE);
+        ScreenImage.setVisibility(View.INVISIBLE);
+        ExerciseImage.setVisibility(View.INVISIBLE);
+    }
 
      public void PreviousPage(View view){
+        linearLayout.setVisibility(View.VISIBLE);
         invisText1.setVisibility(View.INVISIBLE);
-        text.setVisibility(View.VISIBLE);
         HabitsButton.setVisibility(View.VISIBLE);
         pickHabit.setVisibility(View.INVISIBLE);
         NewHabitButton.setVisibility(View.VISIBLE);
@@ -161,30 +173,58 @@ public class MainActivity extends AppCompatActivity {
     }
     public void CreateHabit(View view){
         linearLayout.setVisibility(View.VISIBLE);
-        if(FoodTrue = true){
+        if(FoodTrue == true){
             Button foodbutton = new Button(this);
             foodbutton.setText("Eating Healthy");
+            foodbutton.setBackgroundColor(Color.parseColor("#FFC105"));
+            foodbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getApplicationContext(), "Eating Healthy", Toast.LENGTH_SHORT).show();
+                    CreatedButtonClicked();
+                }
+            });
             linearLayout.addView(foodbutton);
         }
-        if(ScreenTrue = true){
+        else if(ScreenTrue == true){
             Button screenbutton = new Button(this);
             screenbutton.setText("Limit Screen Time");
+            screenbutton.setBackgroundColor(Color.parseColor("#FFC105"));
+            screenbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getApplicationContext(), "Limit Screen Time", Toast.LENGTH_SHORT).show();
+                }
+            });
             linearLayout.addView(screenbutton);
         }
-        if(MeditatingTrue = true){
+        else if(MeditatingTrue == true){
             Button mbutton = new Button(this);
             mbutton.setText("Meditating");
             linearLayout.addView(mbutton);
+            mbutton.setBackgroundColor(Color.parseColor("#FFC105"));
+            mbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getApplicationContext(), "Meditating Everyday", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
-        if(ExerciseTrue = true){
+        else if(ExerciseTrue == true){
             Button ebutton = new Button(this);
             ebutton.setText("Exercising Everyday");
+            ebutton.setBackgroundColor(Color.parseColor("#FFC105"));
+            ebutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getApplicationContext(), "Exercising Everyday", Toast.LENGTH_SHORT).show();
+                }
+            });
             linearLayout.addView(ebutton);
         }
 
 
         invisText1.setVisibility(View.INVISIBLE);
-        text.setVisibility(View.VISIBLE);
         HabitsButton.setVisibility(View.VISIBLE);
         pickHabit.setVisibility(View.INVISIBLE);
         NewHabitButton.setVisibility(View.VISIBLE);
@@ -194,4 +234,5 @@ public class MainActivity extends AppCompatActivity {
         ScreenImage.setVisibility(View.INVISIBLE);
         ExerciseImage.setVisibility(View.INVISIBLE);
     }
+
 }
