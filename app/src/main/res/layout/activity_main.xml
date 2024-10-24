@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
     <CalendarView
@@ -17,18 +17,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageView
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/yellow_color"
-        android:text="habits"
+        android:layout_width="198dp"
+        android:layout_height="163dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.139" />
+        app:layout_constraintVertical_bias="0.096"
+        app:srcCompat="@drawable/habitlogo" />
 
     <Button
         android:id="@+id/NextPageButton"
@@ -49,39 +47,47 @@
         android:id="@+id/finishAdding"
         android:layout_width="159dp"
         android:layout_height="65dp"
-        android:background="@drawable/thing_based_rectangle"
+        android:background="@drawable/round_btn"
         android:onClick="CreateHabit"
         android:text="Add Habit"
         android:textAllCaps="false"
         android:textSize="25dp"
+        android:fontFamily="@font/quicksand"
+
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.829" />
+        app:layout_constraintVertical_bias="0.829"
+        tools:visibility="visible" />
 
     <Spinner
         android:id="@+id/pickHabit"
         android:layout_width="409dp"
         android:layout_height="51dp"
         android:background="@color/yellow_color"
+        android:fontFamily="@font/quicksand"
+
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.768" />
+        app:layout_constraintVertical_bias="0.05" />
 
     <TextView
         android:id="@+id/CreateText"
         android:layout_width="wrap_content"
         android:layout_height="28dp"
-        android:background="@color/Neon_light_green"
         android:text="Create New Habit"
+        android:fontFamily="@font/quicksand"
+
+        android:textColor="@color/white"
         android:textSize="20dp"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/pickHabit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -117,7 +123,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
         app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/img_1" />
+        app:srcCompat="@drawable/meditation" />
 
     <ImageView
         android:id="@+id/Food"
@@ -128,7 +134,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img" />
+        app:srcCompat="@drawable/salad" />
 
     <ImageView
         android:id="@+id/Exercise"
@@ -139,7 +145,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_2" />
+        app:srcCompat="@drawable/running" />
 
     <ImageView
         android:id="@+id/screenTime"
@@ -152,7 +158,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.36"
-        app:srcCompat="@drawable/img_3" />
+        app:srcCompat="@drawable/limit" />
 
     <CalendarView
         android:id="@+id/calendarView2"
@@ -169,14 +175,16 @@
 
     <ImageView
         android:id="@+id/fire"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="335dp"
         android:layout_weight="1"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/NextPageButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.314"
         app:srcCompat="@drawable/fire"
         tools:ignore="MissingConstraints" />
 
@@ -186,20 +194,24 @@
         android:layout_height="381dp"
         android:columnCount="2"
         android:orientation="horizontal"
-        android:visibility="visible"
+        android:paddingVertical="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.847"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.617" />
+        app:layout_constraintVertical_bias="0.617"
+        tools:visibility="gone" />
 
     <TextView
         android:id="@+id/streakText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Streak: 0"
-        android:textSize="15dp"
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/quicksand"
+
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -215,6 +227,8 @@
         android:background="@color/yellow_color"
         android:onClick="addStreak"
         android:text="Check Streak"
+        android:fontFamily="@font/quicksand"
+
         android:textAllCaps="false"
         android:textSize="18dp"
         android:visibility="invisible"
@@ -230,6 +244,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
+        android:textColor="@color/white"
+        android:fontFamily="@font/quicksand"
+
         android:textSize="25dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -242,16 +259,24 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:text="Tap to Create Habit "
+        android:textColor="@color/white"
+        android:fontFamily="@font/quicksand"
+
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Exercise"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:fontFamily="@font/quicksand"
+
         android:text="Come Back Tomorrow to Continue Your Streak"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -267,6 +292,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select A Habit"
+        android:fontFamily="@font/quicksand"
+        android:textColor="@color/white"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -274,8 +301,7 @@
         app:layout_constraintStart_toEndOf="@+id/Exercise"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.146"
-        tools:ignore="MissingConstraints"
-        tools:visibility="visible" />
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/uparrow"
@@ -289,19 +315,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.822"
         app:srcCompat="@android:drawable/arrow_up_float"
-        tools:ignore="MissingConstraints"
-        tools:visibility="visible" />
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/down1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/NextPageButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/arrow_down_float"
         tools:ignore="MissingConstraints" />
 
@@ -309,7 +334,8 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tap to View Streak"
+        android:text=" "
+        android:textColor="@color/white"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -329,5 +355,21 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="108dp"
         tools:layout_editor_absoluteY="205dp" />
+
+    <TextView
+        android:id="@+id/Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pulse"
+        android:fontFamily="@font/quicksand"
+        android:textColor="@color/white"
+        android:textSize="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.287" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

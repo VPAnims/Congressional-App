@@ -2,10 +2,14 @@ package App.test;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.annotation.SuppressLint;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView ScreenImage;
     private ImageView MeditatingImage;
     private GridLayout linearLayout;
+    private TextView AppName;
     private TextView tutorial1;
     private TextView tutorial2;
     private TextView tutorial3;
@@ -46,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView streakText;
     private TextView habitName;
     private Button addStreakButton;
-    private Button HabitsButton;
+    private ImageView HabitsButton;
     private Button NewHabitButton;
     private Spinner pickHabit;
     private Button FinishButton;
@@ -56,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private Boolean ScreenTrue = false;
     private Boolean MeditatingTrue = false;
     private Boolean NoneTrue = true;
-
+    //private Typeface quicksand = ResourcesCompat.getFont(this, R.font.quicksand);
     private int colorNumber = 1;
     private static long two_minutes = TimeUnit.DAYS.toMillis(1);
 
@@ -88,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         tutorial4 = findViewById(R.id.textView4);
         streakText = findViewById(R.id.streakText);
         invisText1 = findViewById(R.id.CreateText);
+        AppName = findViewById(R.id.Name);
         addStreakButton = findViewById(R.id.addStreak);
         HabitsButton = findViewById(R.id.button);
         NewHabitButton = findViewById(R.id.NextPageButton);
@@ -109,24 +115,18 @@ public class MainActivity extends AppCompatActivity {
         boolean isMeditateTrue = meditatePrefs.getBoolean("MeditateTrue", false);
         boolean isExerciseTrue = exercisePrefs.getBoolean("ExerciseTrue", false);
 
-        int foodColor = foodPrefs.getInt("color", Color.parseColor("#FFFFFF"));
-        int deleteFoodColor = foodPrefs.getInt("deleteColor", Color.parseColor("#FFFFFF"));
-        int screenColor = screenPrefs.getInt("color", Color.parseColor("#FFFFFF"));
-        int deleteScreenColor = screenPrefs.getInt("deleteColor", Color.parseColor("#FFFFFF"));
-        int meditateColor = meditatePrefs.getInt("color", Color.parseColor("#FFFFFF"));
-        int deleteMeditateColor = meditatePrefs.getInt("deleteColor", Color.parseColor("#FFFFFF"));
-        int exerciseColor = exercisePrefs.getInt("color", Color.parseColor("#FFFFFF"));
-        int deleteExerciseColor = exercisePrefs.getInt("deleteColor", Color.parseColor("#FFFFFF"));
+
+
 
         if(isFoodTrue == true){
             Button foodButton = new Button(this);
             foodButton.setText("      Eating Healthy      ");
             foodButton.setAllCaps(false);
-            foodButton.setBackgroundColor(foodColor);
+            foodButton.setBackground(getResources().getDrawable(R.drawable.yellow_round_btn));
             Button deleteFood = new Button(this);
             deleteFood.setText("Delete");
             deleteFood.setAllCaps(false);
-            deleteFood.setBackgroundColor(deleteFoodColor);
+            deleteFood.setBackground(getResources().getDrawable(R.drawable.green_roundish));
 
             foodButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -162,11 +162,11 @@ public class MainActivity extends AppCompatActivity {
             Button screenbutton = new Button(this);
             screenbutton.setText("  Limit Screen Time   ");
             screenbutton.setAllCaps(false);
-            screenbutton.setBackgroundColor(screenColor);
+            screenbutton.setBackground(getResources().getDrawable(R.drawable.yellow_round_btn));
             Button delete = new Button(this);
             delete.setText("Delete");
             delete.setAllCaps(false);
-            delete.setBackgroundColor(deleteScreenColor);
+            delete.setBackground(getResources().getDrawable(R.drawable.green_roundish));
 
             screenbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -201,11 +201,11 @@ public class MainActivity extends AppCompatActivity {
             Button mbutton = new Button(this);
             mbutton.setText("          Meditating         ");
             mbutton.setAllCaps(false);
-            mbutton.setBackgroundColor(meditateColor);
+            mbutton.setBackground(getResources().getDrawable(R.drawable.yellow_round_btn));
             Button delete = new Button(this);
             delete.setText("Delete");
             delete.setAllCaps(false);
-            delete.setBackgroundColor(deleteMeditateColor);
+            delete.setBackground(getResources().getDrawable(R.drawable.green_roundish));
 
             mbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -240,11 +240,12 @@ public class MainActivity extends AppCompatActivity {
             Button ebutton = new Button(this);
             ebutton.setText(" Exercising Everyday ");
             ebutton.setAllCaps(false);
-            ebutton.setBackgroundColor(exerciseColor);
+            ebutton.setBackground(getResources().getDrawable(R.drawable.yellow_round_btn));
             Button delete = new Button(this);
             delete.setText("Delete");
             delete.setAllCaps(false);
-            delete.setBackgroundColor(deleteExerciseColor);
+            delete.setPadding(10, 10, 10, 10);
+            delete.setBackground(getResources().getDrawable(R.drawable.green_roundish));
 
             ebutton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -362,6 +363,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayout.setVisibility(View.INVISIBLE);
         invisText1.setVisibility(View.VISIBLE);
         HabitsButton.setVisibility(View.INVISIBLE);
+        AppName.setVisibility(View.INVISIBLE);
         pickHabit.setVisibility(View.VISIBLE);
         NewHabitButton.setVisibility(View.GONE);
         tutorial1.setVisibility(View.INVISIBLE);
@@ -502,6 +504,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayout.setVisibility(View.INVISIBLE);
         invisText1.setVisibility(View.INVISIBLE);
         HabitsButton.setVisibility(View.INVISIBLE);
+        AppName.setVisibility(View.INVISIBLE);
         pickHabit.setVisibility(View.INVISIBLE);
         NewHabitButton.setVisibility(View.INVISIBLE);
         FinishButton.setVisibility(View.INVISIBLE);
@@ -510,7 +513,8 @@ public class MainActivity extends AppCompatActivity {
         ScreenImage.setVisibility(View.INVISIBLE);
         ExerciseImage.setVisibility(View.INVISIBLE);
         tutorial4.setVisibility(View.INVISIBLE);
-
+        tutorial1.setVisibility(View.INVISIBLE);
+        DownArrow.setVisibility(View.INVISIBLE);
     }
 
     public void PreviousPage(View view){
@@ -522,6 +526,8 @@ public class MainActivity extends AppCompatActivity {
         linearLayout.setVisibility(View.VISIBLE);
         invisText1.setVisibility(View.INVISIBLE);
         HabitsButton.setVisibility(View.VISIBLE);
+        AppName.setVisibility(View.VISIBLE);
+
         pickHabit.setVisibility(View.INVISIBLE);
         NewHabitButton.setVisibility(View.VISIBLE);
         FinishButton.setVisibility(View.INVISIBLE);
@@ -558,20 +564,8 @@ public class MainActivity extends AppCompatActivity {
 
             foodEditor.putBoolean("FoodTrue", FoodTrue);
             foodEditor.apply();
-            if (colorNumber % 2 == 0) {
-                foodButton.setBackgroundColor(Color.parseColor("#FFC105"));
-                foodEditor.putInt("color", Color.parseColor("#FFC105"));
-                deleteFoodButton.setBackgroundColor(Color.parseColor("#3DDC84"));
-                foodEditor.putInt("deleteColor", Color.parseColor("#3DDC84"));
-                foodEditor.apply();
-
-            } else {
-                foodButton.setBackgroundColor(Color.parseColor("#3DDC84"));
-                foodEditor.putInt("deleteColor", Color.parseColor("#FFC105"));
-                deleteFoodButton.setBackgroundColor(Color.parseColor("#FFC105"));
-                foodEditor.putInt("color", Color.parseColor("#3DDC84"));
-                foodEditor.apply();
-            }
+            foodButton.setBackground(getResources().getDrawable(R.drawable.yellow_round_btn));
+            deleteFoodButton.setBackground(getResources().getDrawable(R.drawable.green_roundish));
 
             foodButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -615,20 +609,9 @@ public class MainActivity extends AppCompatActivity {
             screenEditor.putBoolean("ScreenTrue", ScreenTrue);
             screenEditor.apply();
 
-            if(colorNumber%2 == 0){
-                screenbutton.setBackgroundColor(Color.parseColor("#FFC105"));
-                screenEditor.putInt("color", Color.parseColor("#FFC105"));
-                delete.setBackgroundColor(Color.parseColor("#3DDC84"));
-                screenEditor.putInt("deleteColor", Color.parseColor("#3DDC84"));
-                screenEditor.apply();
+            screenbutton.setBackground(getResources().getDrawable(R.drawable.yellow_round_btn));
+            delete.setBackground(getResources().getDrawable(R.drawable.green_roundish));
 
-            }else{
-                screenbutton.setBackgroundColor(Color.parseColor("#3DDC84"));
-                screenEditor.putInt("color", Color.parseColor("#3DDC84"));
-                delete.setBackgroundColor(Color.parseColor("#FFC105"));
-                screenEditor.putInt("deleteColor", Color.parseColor("#FFC105"));
-                screenEditor.apply();
-            }
             screenbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -669,6 +652,9 @@ public class MainActivity extends AppCompatActivity {
 
             meditateEditor.putBoolean("MeditateTrue", MeditatingTrue);
             meditateEditor.apply();
+
+            mbutton.setBackground(getResources().getDrawable(R.drawable.yellow_round_btn));
+            delete.setBackground(getResources().getDrawable(R.drawable.green_roundish));
 
             if(colorNumber%2 == 0){
                 mbutton.setBackgroundColor(Color.parseColor("#FFC105"));
@@ -724,6 +710,8 @@ public class MainActivity extends AppCompatActivity {
             exerciseEditor.putBoolean("ExerciseTrue", ExerciseTrue);
             exerciseEditor.apply();
 
+            ebutton.setBackground(getResources().getDrawable(R.drawable.yellow_round_btn));
+            delete.setBackground(getResources().getDrawable(R.drawable.green_roundish));
             if(colorNumber%2 == 0){
                 ebutton.setBackgroundColor(Color.parseColor("#FFC105"));
                 exerciseEditor.putInt("color", Color.parseColor("#FFC105"));
@@ -769,6 +757,8 @@ public class MainActivity extends AppCompatActivity {
 
         invisText1.setVisibility(View.INVISIBLE);
         HabitsButton.setVisibility(View.VISIBLE);
+        AppName.setVisibility(View.VISIBLE);
+
         pickHabit.setVisibility(View.INVISIBLE);
         NewHabitButton.setVisibility(View.VISIBLE);
         FinishButton.setVisibility(View.INVISIBLE);
